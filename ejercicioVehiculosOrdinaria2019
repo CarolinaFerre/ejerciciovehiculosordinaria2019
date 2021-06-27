@@ -1,0 +1,72 @@
+package convocatoriaordinaria2021;
+import java.util.Scanner;
+
+public class vehiculo {
+	static Scanner sc=new Scanner(System.in);
+//atributos de vehículo privados
+private String matricula;
+private boolean prestado=true;
+private boolean disponible=false;
+//atributos estáticos de la clase
+static int contadorprestado;
+//Constructor con matrícula de parámetro
+	public vehiculo(String matricula) {
+		//Asignación de atributos a variables con this
+		this.matricula=matricula;
+		this.prestado=prestado;
+		this.disponible=disponible;
+	}
+//métodos privados de prestado y disponible
+	private void prestado() {
+		}
+	private void disponible() {
+	
+		}
+//métodos del programa
+	public boolean setalquilar(int opcion) {
+		if (opcion==1) {
+			contadorprestado++;
+			return prestado;
+		
+		}
+		return disponible;
+	}
+	public void setdevolver(int opcion) {
+		if(opcion==2) {
+			System.out.println(disponible);
+		}else {
+			System.out.println(prestado);
+		}
+	}
+	public String settoString() {
+		
+		return "La matricula de este vehículo es= "+this.matricula+ "y el número de veces que se ha prestado es= "+contadorprestado;
+		
+	}
+	
+	public static void main(String[]args) {
+	//Declaración de objeto y variables
+		vehiculo coche=new vehiculo("2450gdf");
+		int contador=0;
+		System.out.println("BIEVENIDO AL ALQUILER DE VEHÍCULOS");
+		System.out.println("1.Para alquilar vehículo");
+		System.out.println("2.Para devolver vehículo");
+		System.out.println("3.Para ver matrícula y el número de veces que el vehículo se ha prestado");
+		while(contador!=5) {
+		int opcion=sc.nextInt();
+		switch(opcion) {
+		case 1: 
+			System.out.println("El sistema devolverá true si usted decide alquiler y false si sigue disponible");
+			System.out.println(coche.setalquilar(opcion));
+			contador++;
+			break;
+		case 2: 
+			System.out.println("El sistema devolverá false si usted decide devolver y true si sigue alquilado por usted");
+			coche.setdevolver(opcion);
+			break;
+		case 3:
+			System.out.println(coche.settoString());
+			}
+		}
+	}
+}
